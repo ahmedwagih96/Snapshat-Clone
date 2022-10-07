@@ -1,3 +1,6 @@
+import "./Preview.css";
+import { useEffect } from "react";
+// Material UI
 import {
   AttachFile,
   Close,
@@ -9,25 +12,27 @@ import {
   TextFields,
   Timer,
 } from "@mui/icons-material";
-import { useEffect } from "react";
+// Redux
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import {
   resetCameraImage,
   selectCameraImage,
 } from "../../features/cameraSlice";
-import { v4 as uuid4 } from "uuid";
+import { selectedUser } from "../../features/appSlice";
+// Rex Router
+import { useNavigate } from "react-router-dom";
+// Firebase
 import { storage, db } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore/lite";
-import "./Preview.css";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+// Components
+import { v4 as uuid4 } from "uuid";
 
 function Preview() {
   const cameraImage = useSelector(selectCameraImage);
-
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
+  const user = useSelector(selectedUser);
 
   useEffect(() => {
     if (!cameraImage) navigate("/");
@@ -55,9 +60,9 @@ function Preview() {
           const postsCol = collection(db, "posts");
           addDoc(postsCol, {
             image: downloadURL,
-            username: "Ahmed Alaa",
+            username: user.username,
             read: false,
-            // profilePic,
+            profilePic: user.profilePic,
             timestamp: serverTimestamp(),
           });
           navigate("/chats");
