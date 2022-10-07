@@ -1,15 +1,15 @@
 import "./ChatView.css";
 import { useEffect } from "react";
-// Redux 
+// Redux
 import { useSelector } from "react-redux";
-import { selectCameraImage } from "../../features/cameraSlice";
+import { selectSelectedImage } from "../../features/appSlice";
 // React Router
 import { useNavigate } from "react-router-dom";
 // Components
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
 function ChatView() {
-  const selectedImage = useSelector(selectCameraImage);
+  const selectedImage = useSelector(selectSelectedImage);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,9 +17,11 @@ function ChatView() {
       exit();
     }
   }, [selectedImage]);
+
   const exit = () => {
     navigate("/chats");
   };
+
   return (
     <div className="chatView">
       <img src={selectedImage} alt="Selected Shot" onClick={exit} />

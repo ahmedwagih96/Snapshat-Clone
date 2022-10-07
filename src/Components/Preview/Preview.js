@@ -23,7 +23,12 @@ import { selectedUser } from "../../features/appSlice";
 import { useNavigate } from "react-router-dom";
 // Firebase
 import { storage, db } from "../../firebase";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import {
+  ref,
+  getDownloadURL,
+  uploadString,
+  uploadBytesResumable,
+} from "firebase/storage";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 // Components
 import { v4 as uuid4 } from "uuid";
@@ -47,28 +52,19 @@ function Preview() {
 
     const storageRef = ref(storage, `posts/${id}`);
 
-    const uploadTask = uploadBytesResumable(storageRef, cameraImage);
-
-    uploadTask.on(
-      "state_changed",
-      null,
-      (error) => {
-        console.log(error);
-      },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          const postsCol = collection(db, "posts");
-          addDoc(postsCol, {
-            image: downloadURL,
-            username: user.username,
-            read: false,
-            profilePic: user.profilePic,
-            timestamp: serverTimestamp(),
-          });
-          navigate("/chats");
+    uploadString(storageRef, cameraImage, "data_url").then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((downloadURL) => {
+        const postsCol = collection(db, "posts");
+        addDoc(postsCol, {
+          image: downloadURL,
+          username: user.username,
+          read: false,
+          profilePic: user.profilePic,
+          timestamp: serverTimestamp(),
         });
-      }
-    );
+        navigate("/chats");
+      });
+    });
   };
 
   return (
