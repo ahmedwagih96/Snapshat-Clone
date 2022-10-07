@@ -27,7 +27,6 @@ import {
   ref,
   getDownloadURL,
   uploadString,
-  uploadBytesResumable,
 } from "firebase/storage";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 // Components

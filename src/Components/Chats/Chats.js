@@ -23,7 +23,7 @@ function Chats() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const q = query(collection(db, "posts"), orderBy("timestamp"));
+    const q = query(collection(db, "posts"), orderBy("timestamp", "desc"));
     onSnapshot(q, (querySnapshot) => {
       setPosts(
         querySnapshot.docs.map((doc) => ({
