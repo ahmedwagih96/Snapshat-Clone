@@ -18,7 +18,7 @@ import {
   resetCameraImage,
   selectCameraImage,
 } from "../../features/cameraSlice";
-import { selectedUser } from "../../features/appSlice";
+import { selectedUser } from "../../features/userSlice";
 // Rex Router
 import { useNavigate } from "react-router-dom";
 // Firebase

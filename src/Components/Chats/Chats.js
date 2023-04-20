@@ -12,7 +12,7 @@ import Chat from "../Chat/Chat";
 // React Router
 import { useNavigate } from "react-router-dom";
 // Redux
-import { selectedUser } from "../../features/appSlice";
+import { selectedUser } from "../../features/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { resetCameraImage } from "../../features/cameraSlice";
 

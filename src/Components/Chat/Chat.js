@@ -4,7 +4,7 @@ import { StopRounded } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
 // Redux
 import { useDispatch } from "react-redux";
-import { selectImage } from "../../features/appSlice";
+import { selectImage } from "../../features/userSlice";
 // Components
 import ReactTimeAgo from "react-timeago";
 // Firebase

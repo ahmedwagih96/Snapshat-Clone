@@ -5,8 +5,8 @@ const initialState = {
   selectedImage: null,
 };
 
-export const appSlice = createSlice({
-  name: "app",
+export const userSlice = createSlice({
+  name: "user",
   initialState,
   reducers: {
     login: (state, action) => {
@@ -24,9 +24,9 @@ export const appSlice = createSlice({
   },
 });
 
-export const { login, logout, selectImage, resetImage } = appSlice.actions;
+export const { login, logout, selectImage, resetImage } = userSlice.actions;
 
-export const selectedUser = (state) => state.app.user;
-export const selectSelectedImage = (state) => state.app.selectedImage;
+export const selectedUser = (state) => state.user.user;
+export const selectSelectedImage = (state) => state.user.selectedImage;
 
-export default appSlice.reducer;
+export default userSlice.reducer;

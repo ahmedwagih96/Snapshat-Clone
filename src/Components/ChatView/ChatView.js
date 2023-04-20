@@ -2,7 +2,7 @@ import "./ChatView.css";
 import { useEffect } from "react";
 // Redux
 import { useSelector } from "react-redux";
-import { selectSelectedImage } from "../../features/appSlice";
+import { selectSelectedImage } from "../../features/userSlice";
 // React Router
 import { useNavigate } from "react-router-dom";
 // Components
