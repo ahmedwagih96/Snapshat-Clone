@@ -13,3 +13,7 @@
   height: 300px;
   object-fit: contain;
 }
+
+.login__button {
+  background-color: white;
+}
