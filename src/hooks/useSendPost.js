@@ -12,6 +12,9 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { v4 as uuid4 } from "uuid";
 import useUserSlice from "./useUserSlice";
 import useCameraSlice from "./useCameraSlice";
+// React Toast
+import { toast } from 'react-toastify';
+
 
 function useSendPost() {
     const navigate = useNavigate();
@@ -31,8 +34,19 @@ function useSendPost() {
               timestamp: serverTimestamp(),
             });
             navigate("/chats");
-          });
-        });
+          }).catch(()=>{
+            toast.error("Error, please try again", {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+          })
+        });;
+        })
       };
   return sendPost
 }

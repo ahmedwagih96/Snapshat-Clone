@@ -2,9 +2,6 @@ import "./Chat.css";
 // Material UI
 import { StopRounded } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
-// Redux
-import { useDispatch } from "react-redux";
-import { selectImage } from "../../features/userSlice";
 // Components
 import ReactTimeAgo from "react-timeago";
 // Firebase
@@ -12,14 +9,15 @@ import { db } from "../../firebase";
 import { doc, setDoc } from "firebase/firestore";
 // React Router
 import { useNavigate } from "react-router-dom";
+import useCameraSlice from "../../hooks/useCameraSlice";
 
 function Chat({ id, data }) {
   const {username, timestamp, read, image, profilePic} = data
-  const dispatch = useDispatch();
+  const {setSnapImage} = useCameraSlice()
   const navigate = useNavigate();
   const openChat = () => {
     if (!read) {
-      dispatch(selectImage(image));
+      setSnapImage(image)
       const docRef = doc(db, "posts", id);
       setDoc(docRef, { read: true }, { merge: true });
       navigate("/chats/view");

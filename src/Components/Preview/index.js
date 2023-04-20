@@ -18,9 +18,14 @@ function Preview() {
     if(!capturedImage) navigate('/')
   },[navigate, capturedImage]);
 
+  const close = ()=>{
+    resetCapturedImage()
+    navigate('/')
+  }
+
   return (
     <div className="preview">
-      <Close className="preview__close" onClick={()=>resetCapturedImage()} />
+      <Close className="preview__close" onClick={close} />
       <ToolBar/>
       <img src={capturedImage} alt="capture preview" />
       <SendButton/>

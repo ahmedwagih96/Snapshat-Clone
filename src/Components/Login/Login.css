@@ -14,6 +14,27 @@
   object-fit: contain;
 }
 
-.login__button {
+.login__button{
   background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:10px 20px;
+  border:none;
+  width: fit-content;
+  margin: auto;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: .3s;
+  gap: 10px;
+}
+
+.login__button:hover{
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.login__button img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }

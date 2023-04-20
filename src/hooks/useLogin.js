@@ -2,6 +2,8 @@
 import { auth, provider } from "../firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import useUserSlice from "./useUserSlice";
+// React Toast
+import { toast } from 'react-toastify';
 
 function useLogin() {
   const {loginToApp} = useUserSlice()
@@ -17,7 +19,18 @@ function useLogin() {
             id: user.uid,
           })
       })
-      .catch((error) => alert(error.message));
+      .catch(() => {
+        toast.error("Please Sign In", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          })
+      }) ;
   };
   return signIn;
 }

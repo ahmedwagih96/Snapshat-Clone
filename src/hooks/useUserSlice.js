@@ -6,7 +6,7 @@ function useUserSlice() {
     const user = useSelector(selectedUser)
     const dispatch = useDispatch()
     const loginToApp = useCallback((user)=>{dispatch(login(user))},[dispatch])
-    const logoutFromApp = useCallback(()=>{dispatch(logout)},[dispatch])
+    const logoutFromApp = useCallback(()=>{dispatch(logout())},[dispatch])
   return {user, loginToApp, logoutFromApp}
 }
 

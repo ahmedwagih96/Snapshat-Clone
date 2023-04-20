@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cameraImage: null,
+  chatView: null,
 };
 
 export const cameraSlice = createSlice({
@@ -14,11 +15,18 @@ export const cameraSlice = createSlice({
     resetCameraImage: (state) => {
       state.cameraImage = null;
     },
+    setChatView: (state, action) =>{
+      state.chatView = action.payload;
+    },
+    resetChatView: (state)=>{
+      state.chatView = null
+    }
   },
 });
 
-export const { setCameraImage, resetCameraImage } = cameraSlice.actions;
+export const { setCameraImage, resetCameraImage,setChatView, resetChatView  } = cameraSlice.actions;
 
 export const selectCameraImage = (state) => state.camera.cameraImage;
+export const selectChatView = (state) => state.camera.chatView;
 
 export default cameraSlice.reducer;

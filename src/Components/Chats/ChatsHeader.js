@@ -7,15 +7,19 @@ import { signOut } from "firebase/auth";
 // Custom Hooks
 import useUserSlice from "../../hooks/useUserSlice";
 function ChatsHeader() {
-    const {user} = useUserSlice()
+    const {user, logoutFromApp} = useUserSlice()
+    const logOut = ()=>{
+      console.log(user)
+      signOut(auth);
+      logoutFromApp()
+      console.log(user)
+    }
   return (
     <div className="chats__header">
     <Avatar
       src={user.profilePic}
       className="chats__avatar"
-      onClick={() => {
-        signOut(auth);
-      }}
+      onClick={logOut}
     />
     <div className="chats__search">
       <Search className="chats__searchIcon" />

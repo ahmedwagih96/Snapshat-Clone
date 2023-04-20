@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: null,
-  selectedImage: null,
 };
 
 export const userSlice = createSlice({
@@ -14,19 +13,12 @@ export const userSlice = createSlice({
     },
     logout: (state) => {
       state.user = null;
-    },
-    selectImage: (state, action) => {
-      state.selectedImage = action.payload;
-    },
-    resetImage: (state) => {
-      state.selectedImage = null;
-    },
+    }
   },
 });
 
-export const { login, logout, selectImage, resetImage } = userSlice.actions;
+export const { login, logout } = userSlice.actions;
 
 export const selectedUser = (state) => state.user.user;
-export const selectSelectedImage = (state) => state.user.selectedImage;
 
 export default userSlice.reducer;
