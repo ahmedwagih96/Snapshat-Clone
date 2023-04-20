@@ -13,10 +13,11 @@ import { doc, setDoc } from "firebase/firestore";
 // React Router
 import { useNavigate } from "react-router-dom";
 
-function Chat({ id, username, timestamp, read, image, profilePic }) {
+function Chat({ id, data }) {
+  const {username, timestamp, read, image, profilePic} = data
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const open = () => {
+  const openChat = () => {
     if (!read) {
       dispatch(selectImage(image));
       const docRef = doc(db, "posts", id);
@@ -25,7 +26,7 @@ function Chat({ id, username, timestamp, read, image, profilePic }) {
     }
   };
   return (
-    <div className="chat" onClick={open}>
+    <div className="chat" onClick={openChat}>
       <Avatar src={profilePic} className="chat__avatar" />
       <div className="chat__info">
         <h4>{username}</h4>
