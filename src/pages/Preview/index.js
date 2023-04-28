@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 // Material UI
 import {Close} from "@mui/icons-material";
 // Components
-import ToolBar from "./ToolBar";
-import SendButton from './SendButton'
+import ToolBar from "../../Components/ToolBar";
+import SendButton from '../../Components/SendButton'
 // Custom Hook
 import useCameraSlice from "../../hooks/useCameraSlice";
 

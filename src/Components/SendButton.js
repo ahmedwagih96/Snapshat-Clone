@@ -1,7 +1,7 @@
 // Material UI
 import {Send} from "@mui/icons-material";
 // Custom Hook 
-import useSendPost from "../../hooks/useSendPost";
+import useSendPost from "../hooks/useSendPost";
 
 function SendButton() {
     

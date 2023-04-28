@@ -1,15 +1,14 @@
-import "./Chat.css";
 // Material UI
 import { StopRounded } from "@mui/icons-material";
 import { Avatar } from "@mui/material";
 // Components
 import ReactTimeAgo from "react-timeago";
 // Firebase
-import { db } from "../../firebase";
+import { db } from "../firebase";
 import { doc, setDoc } from "firebase/firestore";
 // React Router
 import { useNavigate } from "react-router-dom";
-import useCameraSlice from "../../hooks/useCameraSlice";
+import useCameraSlice from "../hooks/useCameraSlice";
 
 function Chat({ id, data }) {
   const {username, timestamp, read, image, profilePic} = data

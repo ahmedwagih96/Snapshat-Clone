@@ -2,8 +2,8 @@ import "./Chats.css";
 // Material UI
 import { RadioButtonUnchecked} from "@mui/icons-material";
 // Components
-import ChatsHeader from "./ChatsHeader";
-import Chat from "../Chat/Chat";
+import ChatsHeader from "../../Components/ChatsHeader";
+import Chat from "../../Components/Chat";
 // React Router
 import { useNavigate } from "react-router-dom";
 // Custom Hooks
