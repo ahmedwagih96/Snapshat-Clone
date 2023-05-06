@@ -24,12 +24,7 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        loginToApp({
-          username: user.displayName,
-          profilePic: user.photoURL,
-          id: user.uid,
-        });
-        navigate("/");
+        loginToApp(user);
       } else {
         logoutFromApp();
         navigate("/login");
@@ -39,7 +34,6 @@ function App() {
 
   return (
     <div className="app">
-      <div className="app__bodyBackground">
         <Suspense>
           <Routes>
             <Route path="/" element={<WebcamCapture />} />
@@ -49,7 +43,6 @@ function App() {
             <Route path="/login" element={<Login />} />
           </Routes>
         </Suspense>
-      </div>
       <ToastContainer />
     </div>
   );

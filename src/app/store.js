@@ -6,4 +6,8 @@ export const store = configureStore({
     user: userReducer,
     camera: cameraReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });
