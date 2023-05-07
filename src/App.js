@@ -10,6 +10,8 @@ import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 // Custom Hooks
 import useUserSlice from "./hooks/useUserSlice";
+// Components 
+import LoadingSpinner from './Components/LoadingSpinner'
 // Pages
 const Login = lazy(() => import("./pages/Login"));
 const WebcamCapture = lazy(() => import("./pages/WebcamCapture"));
@@ -34,7 +36,7 @@ function App() {
 
   return (
     <div className="app">
-        <Suspense>
+        <Suspense fallback = {<LoadingSpinner/>}>
           <Routes>
             <Route path="/" element={<WebcamCapture />} />
             <Route path="/preview" element={<Preview />} />
