@@ -4,7 +4,7 @@ import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // React Router
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 // Firebase
 import { auth } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -21,7 +21,6 @@ const ChatView = lazy(() => import("./pages/ChatView"));
 
 function App() {
   const { loginToApp, logoutFromApp } = useUserSlice();
-  const navigate = useNavigate();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -29,10 +28,9 @@ function App() {
         loginToApp(user);
       } else {
         logoutFromApp();
-        navigate("/login");
       }
     });
-  }, [loginToApp, logoutFromApp, navigate]);
+  }, [loginToApp, logoutFromApp]);
 
   return (
     <div className="app">
